@@ -1,0 +1,34 @@
+<form class="login-form" [formGroup]="loginForm">
+  <h1 class="login-header">Dissertation Control System</h1>
+  <mat-form-field class="login-input" appearance="fill">
+    <mat-label>Імʼя користувача</mat-label>
+    <input type="email"
+           matInput
+           formControlName="username"
+           placeholder="Введіть імʼя користувача">
+    <mat-error
+      *ngIf="!usernameForm.hasError('required')"
+    >
+      Будь ласка, введіть валідне імʼя користувача
+    </mat-error>
+    <mat-error *ngIf="usernameForm.hasError('required')">
+      Імʼя користувача <strong>обовʼязкове</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="login-input" appearance="fill">
+    <mat-label>Пароль</mat-label>
+    <input type="password"
+           matInput
+           formControlName="password"
+           placeholder="Введіть пароль">
+    <mat-error
+      *ngIf="passwordForm.hasError('password')
+        && !passwordForm.hasError('required')"
+    >
+      Будь ласка, введіть валідну адресу електронної почти
+    </mat-error>
+    <mat-error *ngIf="passwordForm.hasError('required')">
+      Пароль <strong>обовʼязковий</strong>
+    </mat-error>
+  </mat-form-field>
+</form>
