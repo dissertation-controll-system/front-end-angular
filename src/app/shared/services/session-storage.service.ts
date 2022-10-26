@@ -8,7 +8,7 @@ const USER_KEY = 'auth-user';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenStorageService {
+export class SessionStorageService {
 
   constructor() { }
 
@@ -25,8 +25,8 @@ export class TokenStorageService {
     window.sessionStorage.setItem(TOKEN_KEY, token);
 
     const user = this.getUser();
-    if (user.id) {
-      this.saveUser({ ...user, token: token });
+    if (user?.id) {
+      this.saveUser({ ...user, accessToken: token });
     }
   }
 
@@ -34,18 +34,18 @@ export class TokenStorageService {
     return window.sessionStorage.getItem(REFRESHTOKEN_KEY);
   }
 
-  saveRefreshToken(token: string) {
+  saveRefreshToken(token: string): void {
     window.sessionStorage.removeItem(REFRESHTOKEN_KEY);
     window.sessionStorage.setItem(REFRESHTOKEN_KEY, token);
   }
 
-  getUser() {
+  getUser(): User | null {
     const user = window.sessionStorage.getItem(USER_KEY);
 
     if (user) {
-      return JSON.parse(user);
+      return JSON.parse(user) as User;
     }
-    return {}
+    return null
   }
 
   public saveUser(user: User): void {

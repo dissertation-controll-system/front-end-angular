@@ -4,7 +4,7 @@ import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { AuthorizationResponseDTO, LoginRequestDTO } from '../../shared/interfaces/authentication-dto.interface';
-import { TokenStorageService } from "../../shared/services/token-storage.service";
+import { SessionStorageService } from "../../shared/services/session-storage.service";
 
 @Injectable()
 export class AuthenticationEffects {
@@ -12,7 +12,7 @@ export class AuthenticationEffects {
   constructor(
     private actions$: Actions,
     private authenticationService: AuthenticationService,
-    private tokenStorageService: TokenStorageService,
+    private sessionStorageService: SessionStorageService,
   ) {}
 
   login$ = createEffect(() => this.actions$.pipe(
@@ -38,9 +38,9 @@ export class AuthenticationEffects {
     ofType(loginSuccess),
     tap(user => {
       console.log(user);
-      this.tokenStorageService.saveToken(user.accessToken);
-      this.tokenStorageService.saveRefreshToken(user.refreshToken);
-      this.tokenStorageService.saveUser(user);
+      this.sessionStorageService.saveToken(user.accessToken);
+      this.sessionStorageService.saveRefreshToken(user.refreshToken);
+      this.sessionStorageService.saveUser(user);
     })
   ), { dispatch: false });
 
@@ -51,7 +51,7 @@ export class AuthenticationEffects {
   logout$ =  createEffect(() => this.actions$.pipe(
     ofType(logout),
     tap(() => {
-      this.tokenStorageService.signOut();
+      this.sessionStorageService.signOut();
     })
   ))
 }
