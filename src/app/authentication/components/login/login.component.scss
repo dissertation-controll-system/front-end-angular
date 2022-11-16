@@ -6,6 +6,11 @@
   align-items: center;
 }
 
+.login-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
 .login-form {
   display: flex;
   flex-flow: column nowrap;
@@ -15,4 +20,10 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
+}
+
+hr {
+  width: 100%;
+  margin: 1rem 0;
+  color: lightgray;
 }

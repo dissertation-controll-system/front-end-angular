@@ -12,6 +12,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { TokenInterceptor } from "./shared/interceptors/token.interceptor";
 import { API_URL_TOKEN } from "./shared/constants/api-url.token";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +25,8 @@ import { API_URL_TOKEN } from "./shared/constants/api-url.token";
     HttpClientModule,
     StoreModule.forRoot({}, {}),
     EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
+    SharedModule,
 
   ],
   providers: [

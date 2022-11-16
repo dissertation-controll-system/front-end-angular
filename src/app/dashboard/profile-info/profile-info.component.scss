@@ -1,0 +1,21 @@
+.user-info-card {
+  &.title {
+    font-size: 2rem;
+  }
+
+  &.user-type {
+    font-size: 1rem;
+  }
+}
+
+.user-info-field {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0;
+  font-size: 1rem;
+
+  &.label {
+    flex-basis: 250px;
+    color: gray;
+  }
+}

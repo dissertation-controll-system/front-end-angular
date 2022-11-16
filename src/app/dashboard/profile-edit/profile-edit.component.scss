@@ -1,0 +1,14 @@
+:host {
+  width: 75%;
+}
+
+.user-edit-form {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.form-button-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1.25rem;
+}

@@ -1,0 +1,29 @@
+mat-drawer-container {
+  height: 100vh;
+  width: 100vw;
+}
+
+mat-drawer {
+  width: 15%;
+}
+
+.sidebar-navigation-menu {
+  margin: 2rem 0;
+}
+
+.sidebar-menu-element {
+  padding: 0.5rem 0;
+  margin: 0.25rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+
+  &:hover {
+    cursor: pointer;
+    background-color: lightgray;
+  }
+}
+
+.sidebar-menu-selected {
+  background-color: lightgray;
+}

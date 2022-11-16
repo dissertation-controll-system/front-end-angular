@@ -1,6 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { LoginRequestDTO } from "../../shared/interfaces/authentication-dto.interface";
 import { User } from "../../shared/interfaces/user.interface";
+import { HttpErrorResponse } from "@angular/common/http";
+import { ErrorResponseDTO } from "../../shared/interfaces/api.interface";
 
 export const enum AuthenticationAction {
   Login = '[Authentication] Login',
@@ -19,6 +21,6 @@ export const loginSuccess = createAction(
 );
 export const loginFailed = createAction(
   AuthenticationAction.LoginFailed,
-  props<{ error: string }>()
+  props<{ errorResponse: HttpErrorResponse }>()
 );
 export const logout = createAction(AuthenticationAction.Logout);

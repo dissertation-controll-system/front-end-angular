@@ -52,4 +52,15 @@ export class SessionStorageService {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
+
+  isLoggedIn() {
+    const token = this.getToken();
+    if(token) {
+      const payload = atob(token.split('.')[1]);
+      const parsedPayload = JSON.parse(payload);
+      return parsedPayload.exp > Date.now() / 1000;
+    } else {
+      return false;
+    }
+  }
 }

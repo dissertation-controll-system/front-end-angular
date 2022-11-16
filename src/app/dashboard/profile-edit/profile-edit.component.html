@@ -1,0 +1,61 @@
+<form class="user-edit-form" [formGroup]="profileEditForm">
+  <mat-form-field class="edit-input" appearance="outline">
+    <mat-label>Імʼя</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="firstName"
+      placeholder="Введіть імʼя"
+    />
+    <mat-error *ngIf="profileEditForm.controls['firstName'].hasError('required')">
+      Імʼя користувача <strong>обовʼязкове</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="edit-input" appearance="outline">
+    <mat-label>Прізвище</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="lastName"
+      placeholder="Введіть імʼя"
+    />
+    <mat-error *ngIf="profileEditForm.controls['lastName'].hasError('required')">
+      Прізвище <strong>обовʼязкове</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="edit-input" appearance="outline">
+    <mat-label>Імʼя по батькові</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="fathersName"
+      placeholder="Введіть імʼя по батькові"
+    />
+    <mat-error *ngIf="profileEditForm.controls['fathersName'].hasError('required')">
+      Імʼя по батькові <strong>обовʼязкове</strong>
+    </mat-error>
+  </mat-form-field>
+  <div class="type-button-wrapper">
+    <mat-button-toggle-group
+      formControlName="type"
+      name="user-type"
+      aria-label="User Type"
+      style="width: auto"
+    >
+      <mat-button-toggle value="STUDENT">Student</mat-button-toggle>
+      <mat-button-toggle value="TEACHER">Teacher</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+  <div class="form-button-wrapper">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submitEdit()"
+      [disabled]="!profileEditForm.valid"
+    >Підтвердити зміни</button>
+    <button
+      mat-button
+      (click)="closeDialog()"
+    >Відмінити зміни</button>
+  </div>
+</form>

@@ -1,8 +1,4 @@
-enum EmailActivationState {
-  PENDING,
-  COMPLETE,
-  FAILED
-}
+import { AccountResponseDTO } from "./account-dto.interface";
 
 export interface LoginRequestDTO {
   username: string;
@@ -13,16 +9,6 @@ export interface SignupRequestDTO {
   username: string;
   email: string;
   password: string;
-}
-
-export interface AccountResponseDTO {
-  id: number;
-  username: string;
-  email: string;
-  active: boolean;
-  emailActivationState: EmailActivationState;
-  roles: string[];
-  appUserRef: string;
 }
 
 export interface TokensResponseDTO {

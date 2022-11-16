@@ -1,41 +1,44 @@
-<form class="login-form" [formGroup]="loginForm">
-  <h1 class="login-header">Dissertation Control System</h1>
-  <mat-form-field class="login-input" appearance="outline">
-    <mat-label>Імʼя користувача</mat-label>
-    <input
-      type="email"
-      matInput
-      formControlName="username"
-      placeholder="Введіть імʼя користувача"
-    />
-    <mat-error *ngIf="!loginForm.controls['username'].hasError('required')">
-      Будь ласка, введіть валідне імʼя користувача
-    </mat-error>
-    <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
-      Імʼя користувача <strong>обовʼязкове</strong>
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field class="password-input" appearance="outline">
-    <mat-label>Пароль</mat-label>
-    <input
-      type="password"
-      matInput
-      formControlName="password"
-      placeholder="Введіть пароль"
-    />
-    <mat-error
-      *ngIf="loginForm.controls['password'].hasError('password')
+<div class="login-wrapper">
+  <form class="login-form" [formGroup]="loginForm">
+    <h1 class="login-header">Dissertation Control System</h1>
+    <mat-form-field class="login-input" appearance="outline">
+      <mat-label>Імʼя користувача</mat-label>
+      <input
+        type="email"
+        matInput
+        formControlName="username"
+        placeholder="Введіть імʼя користувача"
+      />
+      <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+        Імʼя користувача <strong>обовʼязкове</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="password-input" appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        placeholder="Введіть пароль"
+      />
+      <mat-error
+        *ngIf="loginForm.controls['password'].hasError('password')
              && !loginForm.controls['password'].hasError('required')"
-    >
-      Будь ласка, введіть валідну адресу електронної почти
-    </mat-error>
-    <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-      Пароль <strong>обовʼязковий</strong>
-    </mat-error>
-  </mat-form-field>
-  <div class="button-wrapper">
-    <button mat-button routerLink="/reset-password">Забули свій пароль?</button>
-    <button mat-raised-button color="primary" (click)="onSubmit()" [disabled]="!loginForm.valid">Вхід</button>
-  </div>
-</form>
-
+      >
+        Будь ласка, введіть валідний пароль
+      </mat-error>
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+        Пароль <strong>обовʼязковий</strong>
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+      [disabled]="!loginForm.valid"
+    >Вхід</button>
+  </form>
+  <hr>
+  <button mat-stroked-button color="primary" routerLink="/reset-password">Реєстрація</button>
+  <button mat-button routerLink="/reset-password">Забули свій пароль?</button>
+</div>

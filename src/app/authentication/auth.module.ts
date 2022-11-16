@@ -12,7 +12,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { authenticationReducer } from './store/authentication.reducer';
 import { authenticationFeatureKey } from './store/authentication.selectors';
 import { AuthenticationEffects } from './store/authentication.effect';
-import {StoreDevtoolsModule} from "@ngrx/store-devtools";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [LoginComponent],
