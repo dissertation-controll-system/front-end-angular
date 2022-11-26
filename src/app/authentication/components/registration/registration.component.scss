@@ -6,9 +6,17 @@
   align-items: center;
 }
 
-.login-wrapper, .login-form {
-  display: flex;
-  flex-flow: column nowrap;
+h1 {
+  align-self: center;
+}
+
+.registration-wrapper {
+  width: 600px;
+
+  .registration-form {
+    display: flex;
+    flex-flow: column nowrap;
+  }
 }
 
 .button-wrapper {
@@ -21,4 +29,13 @@ hr {
   width: 100%;
   margin: 1rem 0;
   color: lightgray;
+}
+
+mat-error {
+  text-overflow: clip;
+}
+
+.button-back-wrapper {
+  display: flex;
+  justify-content: center;
 }

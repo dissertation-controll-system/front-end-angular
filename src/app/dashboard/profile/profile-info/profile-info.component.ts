@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
-import { AppUserResponseDTO } from "../../shared/interfaces/app-user-dto.interface";
+import { AppUserResponseDTO } from "../../../shared/interfaces/app-user-dto.interface";
 import { take } from "rxjs";
 import { MatDialog } from "@angular/material/dialog";
 import { ProfileEditComponent } from "../profile-edit/profile-edit.component";
@@ -11,7 +11,7 @@ import { ToastrService } from "ngx-toastr";
   templateUrl: './profile-info.component.html',
   styleUrls: ['./profile-info.component.scss']
 })
-export class ProfileInfoComponent implements OnInit {
+export class ProfileInfoComponent {
 
   userData: AppUserResponseDTO;
 
@@ -20,12 +20,12 @@ export class ProfileInfoComponent implements OnInit {
     private toastrService: ToastrService,
     private dialog: MatDialog,
   ) {
-    this.activatedRoute.data.pipe(take(1)).subscribe(({ userData }) => {
-      this.userData = userData;
-    });
+    this.activatedRoute.data
+      .pipe(take(1))
+      .subscribe(({ userData }) => {
+        this.userData = userData;
+      });
   }
-
-  ngOnInit(): void { }
 
   openEditProfileDialog() {
     const dialogRef = this.dialog.open(ProfileEditComponent, {
@@ -34,8 +34,12 @@ export class ProfileInfoComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(response => {
-      this.userData = response;
-      this.toastrService.success('Інформацію про користувача успішно змінено')
+      if (response) {
+        this.userData = response;
+        this.toastrService.success('Інформацію про користувача успішно змінено')
+      } else {
+        this.toastrService.info('Редагування даних відмінено')
+      }
     })
   }
 

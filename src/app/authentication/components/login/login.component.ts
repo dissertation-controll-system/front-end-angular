@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../shared/interfaces/app-state.interface';
 import { login } from '../../store/authentication.action';
@@ -10,7 +9,7 @@ import { login } from '../../store/authentication.action';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   loginForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
@@ -18,13 +17,10 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private http: HttpClient,
     private store: Store<AppState>
   ) {}
 
-  ngOnInit(): void { }
-
-  onSubmit() {
+  onSubmit(): void {
     this.store.dispatch(
       login({
         username: this.loginForm.controls['username'].value!,

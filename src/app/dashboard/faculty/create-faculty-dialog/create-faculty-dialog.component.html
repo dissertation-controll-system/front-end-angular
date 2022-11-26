@@ -1,0 +1,27 @@
+<h1>Новий факультет</h1>
+<form class="faculty-edit-form" [formGroup]="facultyForm">
+  <mat-form-field class="edit-input" appearance="outline">
+    <mat-label>факультет</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="faculty"
+      placeholder="Введіть факультет"
+    >
+    <mat-error *ngIf="facultyForm.hasError('required')">
+      Назва факультету <strong>обовʼязкова</strong>
+    </mat-error>
+  </mat-form-field>
+  <div class="form-button-wrapper">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submitEdit()"
+      [disabled]="!facultyForm.valid"
+    >Підтвердити зміни</button>
+    <button
+      mat-button
+      (click)="closeDialog()"
+    >Відмінити зміни</button>
+  </div>
+</form>

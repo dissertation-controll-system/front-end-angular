@@ -1,0 +1,61 @@
+.container {
+  position: relative;
+}
+
+.faculty-table-container {
+  position: relative;
+  overflow: auto;
+}
+
+.table-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+
+  .mat-column-id {
+    text-align: center;
+    width: 75px;
+  }
+
+  .mat-column-edit,
+  .mat-column-delete {
+    text-align: center;
+    width: 100px;
+  }
+
+  .mat-column-faculty {
+    padding: 0 3rem;
+  }
+}
+
+tr.cathedra-row {
+  height: 0;
+}
+
+tr.faculty-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.faculty-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.faculty-row td {
+  border-bottom-width: 0;
+}
+
+.cathedras--expanded {
+  overflow: hidden;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.faculty-edit-buttons-wrapper {
+  padding: 0.5rem;
+}

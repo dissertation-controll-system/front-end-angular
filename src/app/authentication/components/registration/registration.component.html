@@ -1,0 +1,60 @@
+<div class="registration-wrapper">
+  <form class="registration-form" [formGroup]="registrationForm">
+    <h1 class="registration-header">Реєстрація</h1>
+    <mat-form-field class="registration-input" appearance="outline">
+      <mat-label>Імʼя користувача</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="username"
+        placeholder="Введіть імʼя користувача"
+      />
+      <mat-error *ngIf="registrationForm.controls['username'].hasError('pattern')">
+        Імʼя користувача повинно містити літери латиницею нижнього регістру з нижніми пробілами або без
+      </mat-error>
+      <mat-error *ngIf="registrationForm.controls['username'].hasError('required')">
+        Імʼя користувача <strong>обовʼязкове</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="registration-input" appearance="outline">
+      <mat-label>Електронна пошта</mat-label>
+      <input
+        type="text"
+        matInput
+        formControlName="email"
+        placeholder="Введіть електронну пошту користувача"
+      />
+      <mat-error *ngIf="registrationForm.controls['email'].hasError('required')">
+        Електронна пошта <strong>обовʼязкова</strong>
+      </mat-error>
+      <mat-error *ngIf="registrationForm.controls['email'].hasError('email')">
+        Введіть валідну електронну пошту
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="registration-input" appearance="outline">
+      <mat-label>Пароль</mat-label>
+      <input
+        type="password"
+        matInput
+        formControlName="password"
+        placeholder="Введіть пароль"
+      />
+      <mat-error *ngIf="registrationForm.controls['password'].hasError('pattern')">
+        Пароль повинен містити одну велику, одну маленьку букву, спеціальний символ та його довжина повинна бути не менше 5
+      </mat-error>
+      <mat-error *ngIf="registrationForm.controls['password'].hasError('required')">
+        Пароль <strong>обовʼязковий</strong>
+      </mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onSubmit()"
+      [disabled]="!registrationForm.valid"
+    >Зареєструватись</button>
+  </form>
+  <hr>
+  <div class="button-back-wrapper">
+    <button mat-button routerLink="/login" class="button-back">Назад</button>
+  </div>
+</div>

@@ -10,7 +10,7 @@ import { map, Observable } from "rxjs";
   templateUrl: './header-menu.component.html',
   styleUrls: ['./header-menu.component.scss']
 })
-export class HeaderMenuComponent implements OnInit {
+export class HeaderMenuComponent {
 
   userName$: Observable<string> = this.accountService.getCurrentAccount()
     .pipe(map((account) => account.username));
@@ -19,9 +19,6 @@ export class HeaderMenuComponent implements OnInit {
     private store: Store<AppState>,
     private accountService: AccountService
   ) { }
-
-  ngOnInit(): void {
-  }
 
   logout(): void {
     this.store.dispatch(logout());

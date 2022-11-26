@@ -13,9 +13,10 @@ import { authenticationReducer } from './store/authentication.reducer';
 import { authenticationFeatureKey } from './store/authentication.selectors';
 import { AuthenticationEffects } from './store/authentication.effect';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [LoginComponent, RegistrationComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

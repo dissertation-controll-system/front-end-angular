@@ -1,10 +1,10 @@
 <div class="login-wrapper">
   <form class="login-form" [formGroup]="loginForm">
-    <h1 class="login-header">Dissertation Control System</h1>
+    <h1 class="login-header">Cathedra Control System</h1>
     <mat-form-field class="login-input" appearance="outline">
       <mat-label>Імʼя користувача</mat-label>
       <input
-        type="email"
+        type="text"
         matInput
         formControlName="username"
         placeholder="Введіть імʼя користувача"
@@ -13,7 +13,7 @@
         Імʼя користувача <strong>обовʼязкове</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="password-input" appearance="outline">
+    <mat-form-field class="login-input" appearance="outline">
       <mat-label>Пароль</mat-label>
       <input
         type="password"
@@ -21,12 +21,6 @@
         formControlName="password"
         placeholder="Введіть пароль"
       />
-      <mat-error
-        *ngIf="loginForm.controls['password'].hasError('password')
-             && !loginForm.controls['password'].hasError('required')"
-      >
-        Будь ласка, введіть валідний пароль
-      </mat-error>
       <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
         Пароль <strong>обовʼязковий</strong>
       </mat-error>
@@ -39,6 +33,6 @@
     >Вхід</button>
   </form>
   <hr>
-  <button mat-stroked-button color="primary" routerLink="/reset-password">Реєстрація</button>
+  <button mat-stroked-button color="primary" routerLink="/registration">Реєстрація</button>
   <button mat-button routerLink="/reset-password">Забули свій пароль?</button>
 </div>
