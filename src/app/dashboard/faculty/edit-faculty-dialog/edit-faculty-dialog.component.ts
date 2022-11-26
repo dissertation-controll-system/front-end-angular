@@ -31,7 +31,7 @@ export class EditFacultyDialogComponent {
         take(1),
         catchError(err => {
           this.toastrService.error(err.message);
-          return of('');
+          return of(null);
         })
       )
       .subscribe(response => {

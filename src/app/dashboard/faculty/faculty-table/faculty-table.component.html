@@ -41,7 +41,7 @@
             mat-icon-button
             class="delete-faculty-button"
             aria-label="Delete faculty button"
-            (click)="openDeleteFacultyConfrimDialog(row.id); $event.stopPropagation();"
+            (click)="openDeleteFacultyConfrimDialog(row.id, row.name); $event.stopPropagation();"
            >
             <mat-icon>delete</mat-icon>
           </button>

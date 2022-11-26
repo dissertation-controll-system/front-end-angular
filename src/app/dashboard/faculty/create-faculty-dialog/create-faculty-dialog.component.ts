@@ -23,13 +23,13 @@ export class CreateFacultyDialogComponent {
     private dialogRef: MatDialogRef<CreateFacultyDialogComponent>,
   ) { }
 
-  submitEdit(): void {
+  submit(): void {
     this.facultyService.createFaculty(this.facultyForm.controls['faculty'].value as string)
       .pipe(
         take(1),
         catchError(err => {
           this.toastrService.error(err.message);
-          return of('');
+          return of(null);
         })
       )
       .subscribe(response => {

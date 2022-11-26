@@ -4,6 +4,7 @@ import { FacultyService } from "../../../shared/services/faculty.service";
 import { ToastrService } from "ngx-toastr";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { catchError, of, take } from "rxjs";
+import { FacultyResponseDTO } from "../../../shared/interfaces/faculty-dto.interface";
 
 @Component({
   selector: 'app-delete-faculty-dialog',
@@ -17,7 +18,7 @@ export class DeleteFacultyDialogComponent {
     private facultyService: FacultyService,
     private toastrService: ToastrService,
     private dialogRef: MatDialogRef<DeleteFacultyDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { id: number }
+    @Inject(MAT_DIALOG_DATA) public data: FacultyResponseDTO
   ) { }
 
   confirmDelete(): void {
@@ -26,16 +27,15 @@ export class DeleteFacultyDialogComponent {
         take(1),
         catchError(err => {
           this.toastrService.error(err.message);
-          return of('');
+          return of(null);
         })
       )
       .subscribe(() => {
-        this.dialogRef.close();
+        this.dialogRef.close(this.data.name);
       })
   }
 
   closeDialog(): void {
     this.dialogRef.close();
   }
-
 }

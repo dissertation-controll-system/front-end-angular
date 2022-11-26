@@ -86,7 +86,13 @@ export class FacultyTableComponent implements AfterViewInit {
   openCreateFacultyDialog(): void {
     let dialogRef = this.dialog.open(CreateFacultyDialogComponent, {
       width: '50%'
-    })
+    });
+
+    dialogRef.afterClosed().subscribe((response: FacultyResponseDTO) => {
+      if (response) {
+        this.toastrService.success(`Факультет ${response.name} успішно створено`);
+      }
+    });
   }
 
   openEditFacultyDialog(facultyId: number, facultyName: string): void {
@@ -97,15 +103,25 @@ export class FacultyTableComponent implements AfterViewInit {
       },
       width: '50%'
     });
+
+    dialogRef.afterClosed().subscribe((response: FacultyResponseDTO) => {
+      if (response) {
+        this.toastrService.success(`Факультет ${facultyName} успішно змінено на ${response.name}`);
+      }
+    });
   }
 
-  openDeleteFacultyConfrimDialog(facultyId: number): void {
+  openDeleteFacultyConfrimDialog(facultyId: number, facultyName: string): void {
     let dialogRef = this.dialog.open(DeleteFacultyDialogComponent, {
       data: {
-        id: facultyId
+        id: facultyId,
+        name: facultyName
       },
       width: '50%'
-    })
-  }
+    });
 
+    dialogRef.afterClosed().subscribe((facultyName: string) => {
+      this.toastrService.success(`Факультет ${facultyName} успішно видалено`);
+    });
+  }
 }
