@@ -34,4 +34,4 @@ export interface PageRequestDTO<T> {
 }
 
 export type ISortDirection = 'ASC' | 'DESC';
-export type ISortParams<T> = `${string & keyof T},${ISortDirection}`
+export type ISortParams<T> = `${string & keyof T | string},${ISortDirection | string}`

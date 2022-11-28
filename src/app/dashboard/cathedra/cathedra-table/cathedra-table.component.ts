@@ -22,7 +22,7 @@ export class CathedraTableComponent {
 
   data: CathedraResponseDTO[];
 
-  displayColumns: string[] = ['id', 'cathedra', 'faculty', 'edit', 'delete'];
+  displayColumns: string[] = ['id', 'name', 'faculty', 'edit', 'delete'];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -43,6 +43,7 @@ export class CathedraTableComponent {
           return this.cathedraService.getAllCathedras({
             page: this.paginator.pageIndex,
             size: this.paginator.pageSize,
+            sort: [`${this.sort.active},${this.sort.direction.toLocaleUpperCase()}`]
           });
         }),
         map(data => {

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator } from "@angular/material/paginator";
 import { MatSort } from "@angular/material/sort";
-import { map, merge, startWith, switchMap } from "rxjs";
+import { filter, map, merge, startWith, switchMap } from "rxjs";
 import { FacultyService } from "../../../shared/services/faculty.service";
 import { FacultyResponseDTO } from "../../../shared/interfaces/faculty-dto.interface";
 import { animate, state, style, transition, trigger } from "@angular/animations";
@@ -12,6 +12,7 @@ import { EditFacultyDialogComponent } from "../edit-faculty-dialog/edit-faculty-
 import { DeleteFacultyDialogComponent } from "../delete-faculty-dialog/delete-faculty-dialog.component";
 import { CathedraResponseDTO } from "../../../shared/interfaces/cathedra-dto.interface";
 import { CreateCathedraDialogComponent } from "../create-cathedra-dialog/create-cathedra-dialog.component";
+import { ISortDirection } from "../../../shared/interfaces/page-dto.interface";
 
 @Component({
   selector: 'app-faculty-table',
@@ -35,7 +36,7 @@ export class FacultyTableComponent implements AfterViewInit {
   data: FacultyResponseDTO[];
   cathedrasData: CathedraResponseDTO[];
 
-  displayColumns: string[] = ['id', 'faculty', 'edit', 'delete'];
+  displayColumns: string[] = ['id', 'name', 'edit', 'delete'];
 
   expandedElement: FacultyResponseDTO | null
 
@@ -58,6 +59,7 @@ export class FacultyTableComponent implements AfterViewInit {
           return this.facultyService.getAllFaculties({
             page: this.paginator.pageIndex,
             size: this.paginator.pageSize,
+            sort: [`${this.sort.active},${this.sort.direction.toLocaleUpperCase()}`]
           });
         }),
         map(data => {
