@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+}
+
+.cathedra-table-container {
+  position: relative;
+  overflow: auto;
+}
+
+.table-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  padding: 1rem;
+}
+
+table {
+  width: 100%;
+
+  .mat-column-id {
+    text-align: center;
+    width: 75px;
+  }
+
+  .mat-column-cathedra {
+    width: 500px;
+  }
+
+  .mat-column-edit,
+  .mat-column-delete {
+    text-align: center;
+    width: 100px;
+  }
+}

@@ -10,6 +10,8 @@ import { MatDialog } from "@angular/material/dialog";
 import { CreateFacultyDialogComponent } from "../create-faculty-dialog/create-faculty-dialog.component";
 import { EditFacultyDialogComponent } from "../edit-faculty-dialog/edit-faculty-dialog.component";
 import { DeleteFacultyDialogComponent } from "../delete-faculty-dialog/delete-faculty-dialog.component";
+import { CathedraResponseDTO } from "../../../shared/interfaces/cathedra-dto.interface";
+import { CreateCathedraDialogComponent } from "../create-cathedra-dialog/create-cathedra-dialog.component";
 
 @Component({
   selector: 'app-faculty-table',
@@ -31,7 +33,7 @@ export class FacultyTableComponent implements AfterViewInit {
   lengths: number;
 
   data: FacultyResponseDTO[];
-  cathedrasData: any;
+  cathedrasData: CathedraResponseDTO[];
 
   displayColumns: string[] = ['id', 'faculty', 'edit', 'delete'];
 
@@ -122,6 +124,20 @@ export class FacultyTableComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((facultyName: string) => {
       this.toastrService.success(`Факультет ${facultyName} успішно видалено`);
+    });
+  }
+
+  openCreateCathedraByFacultyDialog(facultyId: number, facultyName: string): void {
+    let dialogRef = this.dialog.open(CreateCathedraDialogComponent, {
+      data: {
+        id: facultyId,
+        name: facultyName
+      },
+      width: '50%'
+    });
+
+    dialogRef.afterClosed().subscribe(({ cathedraName, facultyName }) => {
+      this.toastrService.success(`Кафедра ${cathedraName} для ${facultyName} успішно створена`);
     });
   }
 }

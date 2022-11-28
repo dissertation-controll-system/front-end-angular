@@ -1,7 +1,7 @@
+import { FacultyResponseDTO } from "./faculty-dto.interface";
+
 export interface CathedraResponseDTO {
   id: number;
   name: string;
-  facultyRef: FacultyRef
+  faculty: FacultyResponseDTO;
 }
-
-type FacultyRef = `/faculty/${number}`

@@ -1,0 +1,27 @@
+<h1>Нова кафедра для факультету {{data.name}}</h1>
+<form class="cathedra-edit-form" [formGroup]="cathedraForm">
+  <mat-form-field class="edit-input" appearance="outline">
+    <mat-label>Назва кафедри</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="cathedra"
+      placeholder="Введіть назву кафедри"
+    >
+    <mat-error *ngIf="cathedraForm.hasError('required')">
+      Назва кафедри <strong>обовʼязкова</strong>
+    </mat-error>
+  </mat-form-field>
+  <div class="form-button-wrapper">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="submit()"
+      [disabled]="!cathedraForm.valid"
+    >Створити кафедру</button>
+    <button
+      mat-button
+      (click)="closeDialog()"
+    >Відмінити зміни</button>
+  </div>
+</form>

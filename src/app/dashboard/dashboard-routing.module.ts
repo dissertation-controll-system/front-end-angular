@@ -5,6 +5,7 @@ import { ProfileInfoComponent } from "./profile/profile-info/profile-info.compon
 import { DashboardComponent } from "./container/dashboard.component";
 import { ProfileInfoResolver } from "./resolvers/profile-info.resolver";
 import { FacultyTableComponent } from "./faculty/faculty-table/faculty-table.component";
+import { CathedraTableComponent } from "./cathedra/cathedra-table/cathedra-table.component";
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'faculties',
         component: FacultyTableComponent,
+      },
+      {
+        path: 'cathedras',
+        component: CathedraTableComponent,
       },
       {
         path: '**',

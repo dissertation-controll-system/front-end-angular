@@ -59,3 +59,14 @@ tr.faculty-row:not(.expanded-row):active {
 .faculty-edit-buttons-wrapper {
   padding: 0.5rem;
 }
+
+.expanded-list-cathedras-wrapper {
+  position: relative;
+
+  .create-cathedra-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0.5rem;
+  }
+}

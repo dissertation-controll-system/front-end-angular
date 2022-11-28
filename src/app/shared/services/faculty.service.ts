@@ -4,7 +4,8 @@ import { Observable } from "rxjs";
 import { API_URL_TOKEN } from "../constants/api-url.token";
 import { FacultyResponseDTO } from "../interfaces/faculty-dto.interface";
 import { PageRequestDTO, PageResponseDTO } from "../interfaces/page-dto.interface";
-import { DefaultFacultyTableOptions } from "../constants/default-table-options.constant";
+import { DefaultTableOptions } from "../constants/default-table-options.constant";
+import { CathedraResponseDTO } from "../interfaces/cathedra-dto.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class FacultyService {
 
   constructor(private http: HttpClient, @Inject(API_URL_TOKEN) private apiUrl: string) { }
 
-  getAllFaculties(pageOptions: PageRequestDTO<FacultyResponseDTO> = DefaultFacultyTableOptions):
+  getAllFaculties(pageOptions: PageRequestDTO<FacultyResponseDTO> = DefaultTableOptions):
     Observable<PageResponseDTO<FacultyResponseDTO>> {
       return this.http.get<PageResponseDTO<FacultyResponseDTO>>(
         `${this.apiUrl}/faculties`, {
@@ -40,13 +41,13 @@ export class FacultyService {
   createCathedraToFaculty(facultyId: number, cathedraName: string): Observable<PageResponseDTO<FacultyResponseDTO>> {
     return this.http.post<PageResponseDTO<FacultyResponseDTO>>(
       `${this.apiUrl}/faculties/${facultyId}/cathedras`, {
-        params: { name: cathedraName }
+        name: cathedraName
       }
     )
   }
 
-  getAllCathedrasByFacultyId(facultyId: number): Observable<PageResponseDTO<FacultyResponseDTO>> {
-    return this.http.get<PageResponseDTO<FacultyResponseDTO>>(
+  getAllCathedrasByFacultyId(facultyId: number): Observable<PageResponseDTO<CathedraResponseDTO>> {
+    return this.http.get<PageResponseDTO<CathedraResponseDTO>>(
       `${this.apiUrl}/faculties/${facultyId}/cathedras`
     )
   }

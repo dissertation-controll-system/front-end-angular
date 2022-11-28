@@ -1,0 +1,63 @@
+<div class="container mat-elevation-z8">
+  <div class="cathedra-table-container">
+    <table mat-table [dataSource]="data" multiTemplateDataRows class="cathedra-table"
+           matSort matSortActive="created" matSortDisableClear matSortDirection="desc">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let row">{{row.id}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="cathedra">
+        <th mat-header-cell *matHeaderCellDef>Кафедра</th>
+        <td mat-cell *matCellDef="let row">{{row.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="faculty">
+        <th mat-header-cell *matHeaderCellDef>Факультет кафедри</th>
+        <td mat-cell *matCellDef="let row">{{row.faculty.name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th mat-header-cell *matHeaderCellDef>Редагувати</th>
+        <td mat-cell *matCellDef="let row">
+          <button
+            mat-icon-button
+            class="edit-cathedra-button"
+            aria-label="Edit cathedra button"
+            (click)="openEditCathedraDialog(row.id, row.name); $event.stopPropagation();"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef>Видалити</th>
+        <td mat-cell *matCellDef="let row">
+          <button
+            mat-icon-button
+            class="delete-cathedra-button"
+            aria-label="Delete cathedra button"
+            (click)="openDeleteCathedraDialog(row.id, row.name); $event.stopPropagation();"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+    </table>
+  </div>
+
+  <div class="table-overlay" *ngIf="isCathedraDataLoading">
+    <mat-spinner [diameter]="50"></mat-spinner>
+  </div>
+
+  <mat-paginator
+    [length]="lengths"
+    [pageSize]="10"
+    [pageSizeOptions]="[5,10,15]"
+    aria-label="Select page of faculties result"></mat-paginator>
+</div>

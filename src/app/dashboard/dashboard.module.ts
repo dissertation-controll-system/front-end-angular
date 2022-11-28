@@ -20,6 +20,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { CreateFacultyDialogComponent } from './faculty/create-faculty-dialog/create-faculty-dialog.component';
 import { EditFacultyDialogComponent } from './faculty/edit-faculty-dialog/edit-faculty-dialog.component';
 import { DeleteFacultyDialogComponent } from './faculty/delete-faculty-dialog/delete-faculty-dialog.component';
+import { CathedraTableComponent } from './cathedra/cathedra-table/cathedra-table.component';
+import { CreateCathedraDialogComponent } from './faculty/create-cathedra-dialog/create-cathedra-dialog.component';
 
 
 
@@ -31,7 +33,9 @@ import { DeleteFacultyDialogComponent } from './faculty/delete-faculty-dialog/de
     FacultyTableComponent,
     CreateFacultyDialogComponent,
     EditFacultyDialogComponent,
-    DeleteFacultyDialogComponent
+    DeleteFacultyDialogComponent,
+    CathedraTableComponent,
+    CreateCathedraDialogComponent
   ],
   imports: [
     CommonModule,

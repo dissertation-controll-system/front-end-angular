@@ -60,10 +60,18 @@
               <mat-spinner [diameter]="50"></mat-spinner>
             </div>
             <ng-template #cathedraDataContainer>
-              <h2>Кафедри факультету</h2>
-              <ul>
-                <li *ngFor="let cathedra of cathedrasData">{{cathedra.name}}</li>
-              </ul>
+              <div class="expanded-list-cathedras-wrapper">
+                <h2>Кафедри факультету</h2>
+                <ul>
+                  <li *ngFor="let cathedra of cathedrasData">{{cathedra.name}}</li>
+                </ul>
+                <button class="create-cathedra-button"
+                    mat-raised-button
+                    (click)="openCreateCathedraByFacultyDialog(row.id, row.name)"
+                    color="primary">
+                  <mat-icon>add</mat-icon> Створити кафедру для {{row.name}}
+                </button>
+              </div>
             </ng-template>
           </div>
         </td>
@@ -89,6 +97,6 @@
   <mat-paginator
     [length]="lengths"
     [pageSize]="10"
-    [pageSizeOptions]="[1,2,3,4,5,10,15]"
+    [pageSizeOptions]="[5,10,15]"
     aria-label="Select page of faculties result"></mat-paginator>
 </div>
